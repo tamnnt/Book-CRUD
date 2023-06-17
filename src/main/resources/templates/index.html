@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <title>Book List</title>
+</head>
+<body>
+<div class="container">
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a href="#" class="navbar-brand">Index</a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#">Home</a></li>
+                <li><a href="#">Page 1</a></li>
+                <li><a href="#">Page 2</a></li>
+            </ul>
+        </div>
+    </nav>
+</div>
+<h1 style="text-align:center;">Manager Book</h1>
+<div th:if="${success}"
+    class="row alert alert-success alert-dimissible">
+    <span th:text="${success}"></span>
+</div>
+<a href="/add" class="btn btn-success">Add Book</a>
+<table class="table table-active">
+    <tr>
+        <th>Id</th>
+        <th><a href="#">Name</a></th>
+        <th>Publisher Date</th>
+        <th>Price</th>
+        <th></th>
+    </tr>
+    <tr th:each="book : ${books}" >
+        <td th:text="${book.id}"></td>
+        <td th:text="${book.title}"></td>
+        <td th:text="${book.publishedDate}"></td>
+        <td th:text="${book.price}+VND"></td>
+        <td>
+            <a th:href="@{/edit?id={id}(id=${book.id})}" class="btn btn-primary">Edit</a>
+            <a th:href="@{/delete?id={id}(id=${book.id})}" class="btn btn-danger">Delete</a>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

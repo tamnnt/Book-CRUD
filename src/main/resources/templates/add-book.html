@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <title>Add Book</title>
+</head>
+<body>
+<div class="col-3">
+    <div class="container col-6">
+        <h1>New Book</h1>
+        <div class="col-md-auto">
+            <form th:object="${book}" th:action="@{save}" action="#" method="post">
+                <div>
+                    <label th:text="Title" th:for="title"></label>
+                    <input type="text" th:field="*{title}" class="form-control" placeholder="Enter Title...">
+                </div>
+                <div style="clear:both;display:block;height:10px"></div>
+                <div>
+                    <label th:text="Price" th:for="price"></label>
+                    <input type="number" th:field="*{price}" class="form-control">
+                </div>
+                <div>
+                    <label th:for="publishedDate">Published Date:</label>
+                    <input type="date" id="publishedDate" th:field="*{publishedDate}">
+                </div>
+                <div style="clear:both;display:block;height:10px"></div>
+                <input type="submit" class="btn btn-success" value="Save">
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>
